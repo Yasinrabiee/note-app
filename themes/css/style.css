@@ -1,0 +1,268 @@
+@font-face{
+	font-family: Vazir;
+	src: url('../fonts/Vazirmatn-Regular.woff2');
+}
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+/*	font-family: "Poppins", sans-serif;*/
+	font-family: Vazir;
+	font-weight: 500;
+	font-style: normal;
+}
+
+body{
+	background: #ECEFF1;
+}
+
+.container{
+/*	height: 100%;*/
+	margin-block-start: 100px;
+}
+
+.section-start{
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.section__header{
+	font-family: sans-serif !important;
+	font-size: 50px;
+	color: #0091EA;
+	text-shadow: 0 1px 20px #81D4FA;
+	margin-block-end: 10px;
+}
+
+.section__input__text{
+	outline: none;
+	border-radius: 5px;
+	box-shadow: 0 1px 10px #bce3f5;
+	border: 2px solid #fff;
+	padding: 3px 10px;
+	caret-color: #cdd3d6;
+	color: #0091EA;
+	font-weight: 300;
+	transition: all 700ms;
+/*	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;*/
+	width: 250px;
+}
+
+.section__input__text::placeholder {
+	color: #989b9d;
+}
+
+.section__input__text::selection{
+	background: #0091EA;
+	color: #fff;
+}
+
+.section__input__text:focus {
+	box-shadow: 0 1px 10px #74cef8;
+}
+
+.input__btn{
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	padding: 5px;
+	background-color: #fff;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	box-shadow: 0 1px 10px #bce3f5;
+	color: #989b9d;
+	transition: all 0.5s;
+	border: 2px solid #fff;
+}
+
+.section__input{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.input__btn:hover{
+	box-shadow: 0 1px 10px #74cef8;
+/*    color: #0091EA;*/
+}
+
+#add-btn:hover{
+	color: #558B2F;	
+}
+
+#delete-btn:hover{
+	color: #D32F2F;
+}
+
+#add-btn{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.colors{
+	margin: 20px;
+	display: flex;
+	justify-content: space-between;
+	gap: 10px;
+}
+
+.color{
+	box-shadow: 0 1px 10px #bce3f5;
+	width: 30px;
+	height: 30px;
+	border-radius: 50px;
+	border: 2px solid #fff;
+	cursor: pointer;
+}
+
+.section__boxes{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: stretch;
+	margin: 0 100px;
+}
+
+.box{
+	box-shadow: 0 1px 10px #bce3f5;
+	margin: 10px;
+	border-radius: 5px;
+	width: 250px;
+	min-height: 150px;
+	text-align: start;
+	padding: 10px 15px;
+	font-size: 15px;
+	background: #fff;
+	cursor: pointer;
+	color: #0091EA;
+	position: relative;
+	border: 2px solid #fff;
+	word-wrap: break-word;
+	display: flex;
+	flex-direction: column;
+	order: 100;
+}
+
+.nav{
+	display: flex;
+	justify-content: space-between;
+}
+
+.star,.edit{
+	width: 20px;
+	text-align: left;
+	height: 20px;
+	color: black;
+	margin-block-end: 10px;
+}
+
+.edit{
+/*	color: #455A64;*/
+}
+
+.star.active{
+	transition: all 400ms;
+	color: #FFEB3B;
+}
+
+.section__edit{
+	z-index: 99999;
+	width: 300px;
+	border-radius: 5px;
+	position: fixed;
+	left: 50%;
+	transform: translate(-50%);
+	padding: 5px;
+	height: 40px;
+	justify-content: center;
+	flex-direction: row-reverse;
+	bottom: -110px;
+	display: flex;
+	gap: 6px;
+	transition: all 500ms;
+}
+
+.edit__input{
+	display: block;
+	width: 100%;
+	padding: .375rem .75rem;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #212529;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid #dee2e6;
+	border-radius: 0.375rem;
+	box-shadow: 0 1px 10px #bce3f5;
+	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.edit__input:focus {
+	color: #212529;
+	background-color: #fff;
+	border-color: #86b7fe;
+	outline: 0;
+	box-shadow: 0 1px 10px #74cef8;
+}
+
+.edit-2{
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	padding: 5px;
+	background-color: #fff;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	box-shadow: 0 1px 10px #bce3f5;
+	color: #989b9d;
+	transition: all 0.5s;
+	border: 2px solid #fff;
+	display: block;
+	position: relative;
+}
+
+.edit-2:hover{
+	box-shadow: 0 1px 10px #74cef8;
+}
+
+.edit__close:hover{
+	color: #D32F2F;
+}
+
+.edit__edit:hover{
+	color: #455A64;
+}
+
+.edit__close svg, .edit__edit svg{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	display: block;
+	width: 21px;
+	height: 21px;
+}
+
+.section-color{
+	display: flex;
+	flex-direction: column;
+}
+
+.trash-icon{
+	color: red !important;
+	width: 17px;
+	height: 17px;
+	transition: all 500ms;
+}
+
+.trash-icon:hover{
+	color: black;
+}
