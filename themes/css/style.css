@@ -1,34 +1,34 @@
-@font-face{
+@font-face {
 	font-family: Vazir;
 	src: url('../fonts/Vazirmatn-Regular.woff2');
 }
 
-*{
+* {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-/*	font-family: "Poppins", sans-serif;*/
+	/*	font-family: "Poppins", sans-serif;*/
 	font-family: Vazir;
 	font-weight: 500;
 	font-style: normal;
 }
 
-body{
+body {
 	background: #ECEFF1;
 }
 
-.container{
-/*	height: 100%;*/
+.container {
+	/*	height: 100%;*/
 	margin-block-start: 100px;
 }
 
-.section-start{
+.section-start {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
 }
 
-.section__header{
+.section__header {
 	font-family: sans-serif !important;
 	font-size: 50px;
 	color: #0091EA;
@@ -36,7 +36,7 @@ body{
 	margin-block-end: 10px;
 }
 
-.section__input__text{
+.section__input__text {
 	outline: none;
 	border-radius: 5px;
 	box-shadow: 0 1px 10px #bce3f5;
@@ -46,7 +46,7 @@ body{
 	color: #0091EA;
 	font-weight: 300;
 	transition: all 700ms;
-/*	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;*/
+	/*	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;*/
 	width: 250px;
 }
 
@@ -54,7 +54,7 @@ body{
 	color: #989b9d;
 }
 
-.section__input__text::selection{
+.section__input__text::selection {
 	background: #0091EA;
 	color: #fff;
 }
@@ -63,7 +63,7 @@ body{
 	box-shadow: 0 1px 10px #74cef8;
 }
 
-.input__btn{
+.input__btn {
 	width: 30px;
 	height: 30px;
 	cursor: pointer;
@@ -78,38 +78,38 @@ body{
 	border: 2px solid #fff;
 }
 
-.section__input{
+.section__input {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
-.input__btn:hover{
+.input__btn:hover {
 	box-shadow: 0 1px 10px #74cef8;
-/*    color: #0091EA;*/
+	/*    color: #0091EA;*/
 }
 
-#add-btn:hover{
-	color: #558B2F;	
+#add-btn:hover {
+	color: #558B2F;
 }
 
-#delete-btn:hover{
+#delete-btn:hover {
 	color: #D32F2F;
 }
 
-#add-btn{
+#add-btn {
 	margin-left: 10px;
 	margin-right: 10px;
 }
 
-.colors{
+.colors {
 	margin: 20px;
 	display: flex;
 	justify-content: space-between;
 	gap: 10px;
 }
 
-.color{
+.color {
 	box-shadow: 0 1px 10px #bce3f5;
 	width: 30px;
 	height: 30px;
@@ -118,7 +118,7 @@ body{
 	cursor: pointer;
 }
 
-.section__boxes{
+.section__boxes {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -126,7 +126,7 @@ body{
 	margin: 0 100px;
 }
 
-.box{
+.box {
 	box-shadow: 0 1px 10px #bce3f5;
 	margin: 10px;
 	border-radius: 5px;
@@ -146,12 +146,13 @@ body{
 	order: 100;
 }
 
-.nav{
+.nav {
 	display: flex;
 	justify-content: space-between;
 }
 
-.star,.edit{
+.star,
+.edit {
 	width: 20px;
 	text-align: left;
 	height: 20px;
@@ -159,16 +160,16 @@ body{
 	margin-block-end: 10px;
 }
 
-.edit{
-/*	color: #455A64;*/
+.edit {
+	/*	color: #455A64;*/
 }
 
-.star.active{
+.star.active {
 	transition: all 400ms;
 	color: #FFEB3B;
 }
 
-.section__edit{
+.section__edit {
 	z-index: 99999;
 	width: 300px;
 	border-radius: 5px;
@@ -179,13 +180,13 @@ body{
 	height: 40px;
 	justify-content: center;
 	flex-direction: row-reverse;
-	bottom: -110px;
+	bottom: -250px;
 	display: flex;
 	gap: 6px;
-	transition: all 500ms;
+	transition: all 750ms;
 }
 
-.edit__input{
+.edit__input {
 	display: block;
 	width: 100%;
 	padding: .375rem .75rem;
@@ -212,7 +213,7 @@ body{
 	box-shadow: 0 1px 10px #74cef8;
 }
 
-.edit-2{
+.edit-2 {
 	width: 30px;
 	height: 30px;
 	cursor: pointer;
@@ -229,40 +230,41 @@ body{
 	position: relative;
 }
 
-.edit-2:hover{
+.edit-2:hover {
 	box-shadow: 0 1px 10px #74cef8;
 }
 
-.edit__close:hover{
+.edit__close:hover {
 	color: #D32F2F;
 }
 
-.edit__edit:hover{
+.edit__edit:hover {
 	color: #455A64;
 }
 
-.edit__close svg, .edit__edit svg{
+.edit__close svg,
+.edit__edit svg {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%,-50%);
+	transform: translate(-50%, -50%);
 	display: block;
 	width: 21px;
 	height: 21px;
 }
 
-.section-color{
+.section-color {
 	display: flex;
 	flex-direction: column;
 }
 
-.trash-icon{
+.trash-icon {
 	color: red !important;
 	width: 17px;
 	height: 17px;
 	transition: all 500ms;
 }
 
-.trash-icon:hover{
+.trash-icon:hover {
 	color: black;
 }
