@@ -1,16 +1,27 @@
+const days = [
+	`شنبه`,
+	`یک شنبه`,
+	`دو شنبه`,
+	`سه شنبه`,
+	`چهار شنبه`,
+	`پنجشنبه`,
+	`جمعه`
+	];
 let value;
 let bgc;
 
 function setColor(color) {
-  bgc = color.css(`background-color`);
-  $(`.section__input__text`).css(`background-color`, bgc);
+	bgc = color.css(`background-color`);
+	$(`.section__input__text`).css(`background-color`,bgc);
 }
 
 function add() {
-  value = $(`.section__input__text`).val();
-  if (value.trim() !== "") {
-    let char = value.charCodeAt(0);
-    let elem = $(`
+	value = $(`.section__input__text`).val();
+	if(value.trim() !== '')
+	{
+		let time = addTime();
+		const char = value.charCodeAt(0);
+		let elem = $(`
 			<div class="box" style="background-color: ${bgc};">
 			<div class="nav">
 			<div>
@@ -32,73 +43,103 @@ function add() {
 			</div>
 			</div>
 			<div class="value">${value}</div>
+			<div class="time">${time}</div>
 			</div>
 			`);
-    if (char >= 65 && char <= 122)
-      elem.children(`.value`).css(`direction`, `ltr`);
-    else elem.children(`.value`).css(`direction`, `rtl`);
-    $(`.section__boxes`).append(elem);
-    $(`.section__input__text`).val(``);
-  }
+		if(char >= 65 && char <= 122)
+			elem.children(`.value`).css(`direction`,`ltr`);
+		else
+			elem.children(`.value`).css(`direction`,`rtl`);
+		$(`.section__boxes`).append(elem);
+		$(`.section__input__text`).val(``);
+	}
 }
 
 function checkDir(text) {
-  let char = text.charCodeAt(0);
-  if (char >= 65 && char <= 122) return true;
-  return false;
+	let char = text.charCodeAt(0);
+	if(char >= 65 && char <= 122)
+		return true;
+	return false;
 }
 
-$(`.color`).click(function () {
-  let color = $(this);
-  setColor(color);
+function editNote(edit) {
+	let editValue = $(`.edit__input`).val();
+	if(editValue.trim() !== '')
+	{
+		if(checkDir(editValue) === true)
+			edit.css(`direction`,`ltr`);
+		else
+			edit.css(`direction`,`rtl`);
+		edit.html(editValue);
+		$(`.section__edit`).css(`bottom`,`-110px`);
+	}
+	let time = addTime();
+	edit.siblings(`.time`).html(`ویرایش شده: ${time}`)
+}
+
+function addTime() {
+	const d = new Date();
+	const day = d.getDay();
+	const hour = d.getHours().toString().padStart(2, `0`);
+	const minute = d.getMinutes().toString().padStart(2, `0`);
+	const time = `${days[(day+1)%7]} ${hour}:${minute}`;
+	return time;
+}
+
+$(`.color`).click(function() {
+	let color = $(this);
+	setColor(color);
 });
 
-$(`#add-btn`).click(function () {
-  add();
+$(`#add-btn`).click(function() {
+	add();
 });
 
-$(`#delete-btn`).click(function () {
-  $(`.section__input__text`).val(``);
+$(`#delete-btn`).click(function() {
+	$(`.section__input__text`).val(``);
 });
 
-$(`html`).keydown(function (event) {
-  if (event.key == `Enter`) add();
+$(`html`).keydown(function(event) {
+	if(event.key == `Enter`)
+		add();
 });
 
-$(`.section__boxes`).on("click", ".star", function () {
-  let note = $(this).closest(`.box`);
-  if ($(this).hasClass(`active`)) note.css(`order`, `100`);
-  else note.css(`order`, `1`);
-  $(this).toggleClass(`active`);
+$(`.section__boxes`).on('click','.star',function() {
+	let note = $(this).closest(`.box`);
+	if($(this).hasClass(`active`))
+		note.css(`order`,`100`);	
+	else
+		note.css(`order`,`1`);
+	$(this).toggleClass(`active`);
 });
 
 let edit;
-$(`.section__boxes`).on("click", ".edit", function () {
-  edit = $(this).closest(".nav").siblings(".value");
-  $(`.section__edit`).css(`bottom`, `250px`);
-  $(`.edit__input`).focus();
-  $(`.edit__edit`).click(function () {
-    let editValue = $(`.edit__input`).val();
-    if (editValue.trim() !== "") {
-      if (checkDir(editValue) === true) edit.css(`direction`, `ltr`);
-      else edit.css(`direction`, `rtl`);
-      edit.html(editValue);
-      $(`.edit__close`).parent(`.section__edit`).css(`bottom`, `-110px`);
-    }
-  });
+$(`.section__boxes`).on('click','.edit',function() {
+	edit = $(this).closest('.nav').siblings('.value');
+	$(`.section__edit`).css(`bottom`,`110px`);
+	$(`.edit__input`).focus();
+	$(`.edit__edit`).click(function() {
+		editNote(edit);
+	});
+	$(`.edit__input`).keydown(function(event) {
+		if(event.key == `Enter`)
+			editNote(edit);
+	});
 });
 
-$(`.edit__close`).click(function () {
-  $(this).parent(`.section__edit`).css(`bottom`, `-250px`);
+$(`.edit__close`).click(function() {
+	$(this).parent(`.section__edit`).css(`bottom`,`-110px`);
 });
 
-$(`.section__boxes`).on("click", ".trash-icon", function () {
-  let trashIcon = $(this).parents(`.box`);
-  trashIcon.fadeOut(400);
+$(`.section__boxes`).on('click','.trash-icon', function() {
+	let trashIcon = $(this).parents(`.box`);
+	trashIcon.fadeOut(400);
 });
 
-$(`.edit__input`).on("input", function () {
-  let text = $(this).val();
-  if (checkDir(text) === true) $(this).css(`direction`, `ltr`);
-  else $(this).css(`direction`, `rtl`);
+$( `.edit__input`).on('input',function() {
+	let text = $(this).val();
+	if(checkDir(text) === true)
+		$(this).css(`direction`,`ltr`);
+	else
+		$(this).css(`direction`,`rtl`);
 });

@@ -7,10 +7,10 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	/*	font-family: "Poppins", sans-serif;*/
-	font-family: Vazir;
-	font-weight: 500;
-	font-style: normal;
+/*	font-family: "Poppins", sans-serif;*/
+font-family: Vazir;
+font-weight: 500;
+font-style: normal;
 }
 
 body {
@@ -18,8 +18,8 @@ body {
 }
 
 .container {
-	/*	height: 100%;*/
-	margin-block-start: 100px;
+/*	height: 100%;*/
+margin-block-start: 100px;
 }
 
 .section-start {
@@ -46,11 +46,11 @@ body {
 	color: #0091EA;
 	font-weight: 300;
 	transition: all 700ms;
-	/*	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;*/
-	width: 250px;
+/*	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;*/
+width: 250px;
 }
 
-.section__input__text::placeholder {
+.section__input__text::placeholder  {
 	color: #989b9d;
 }
 
@@ -59,7 +59,7 @@ body {
 	color: #fff;
 }
 
-.section__input__text:focus {
+.section__input__text:focus  {
 	box-shadow: 0 1px 10px #74cef8;
 }
 
@@ -82,24 +82,24 @@ body {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	gap: 10px;
 }
 
 .input__btn:hover {
 	box-shadow: 0 1px 10px #74cef8;
-	/*    color: #0091EA;*/
+/*    color: #0091EA;*/
 }
 
 #add-btn:hover {
-	color: #558B2F;
+	color: #558B2F;	
 }
 
 #delete-btn:hover {
 	color: #D32F2F;
 }
 
-#add-btn {
-	margin-left: 10px;
-	margin-right: 10px;
+#check-list:hover{
+	color: #0091EA;
 }
 
 .colors {
@@ -144,6 +144,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	order: 100;
+	justify-content: space-between;
 }
 
 .nav {
@@ -151,8 +152,7 @@ body {
 	justify-content: space-between;
 }
 
-.star,
-.edit {
+.star,.edit {
 	width: 20px;
 	text-align: left;
 	height: 20px;
@@ -161,7 +161,7 @@ body {
 }
 
 .edit {
-	/*	color: #455A64;*/
+/*	color: #455A64;*/
 }
 
 .star.active {
@@ -180,10 +180,10 @@ body {
 	height: 40px;
 	justify-content: center;
 	flex-direction: row-reverse;
-	bottom: -250px;
+	bottom: -110px;
 	display: flex;
 	gap: 6px;
-	transition: all 750ms;
+	transition: all 500ms;
 }
 
 .edit__input {
@@ -205,7 +205,7 @@ body {
 	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
-.edit__input:focus {
+.edit__input:focus  {
 	color: #212529;
 	background-color: #fff;
 	border-color: #86b7fe;
@@ -242,12 +242,11 @@ body {
 	color: #455A64;
 }
 
-.edit__close svg,
-.edit__edit svg {
+.edit__close svg, .edit__edit svg {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%,-50%);
 	display: block;
 	width: 21px;
 	height: 21px;
@@ -267,4 +266,14 @@ body {
 
 .trash-icon:hover {
 	color: black;
+}
+
+.time{
+	font-size: 12px;
+	direction: rtl;
+	gap: 3px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+/*	color: #546E7A;*/
 }
