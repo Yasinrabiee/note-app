@@ -269,11 +269,11 @@ width: 250px;
 }
 
 .time{
-	font-size: 12px;
+	font-size: 13px;
 	direction: rtl;
 	gap: 3px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-/*	color: #546E7A;*/
+	color: #546E7A;
 }
