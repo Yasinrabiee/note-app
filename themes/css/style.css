@@ -8,9 +8,9 @@
 	padding: 0;
 	box-sizing: border-box;
 /*	font-family: "Poppins", sans-serif;*/
-font-family: Vazir;
-font-weight: 500;
-font-style: normal;
+	font-family: Vazir;
+	font-weight: 500;
+	font-style: normal;
 }
 
 body {
@@ -19,7 +19,7 @@ body {
 
 .container {
 /*	height: 100%;*/
-margin-block-start: 100px;
+	margin-block-start: 100px;
 }
 
 .section-start {
@@ -47,7 +47,7 @@ margin-block-start: 100px;
 	font-weight: 300;
 	transition: all 700ms;
 /*	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;*/
-width: 250px;
+	width: 250px;
 }
 
 .section__input__text::placeholder  {
@@ -271,9 +271,13 @@ width: 250px;
 .time{
 	font-size: 13px;
 	direction: rtl;
-	gap: 3px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	color: #546E7A;
+	flex-direction: column;
+	margin-block-start: 12px;
 }
+
+/*.value{
+}*/
