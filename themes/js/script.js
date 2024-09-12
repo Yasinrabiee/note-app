@@ -107,7 +107,7 @@ $(`.section__boxes`).on("click", ".star", function () {
 let edit;
 $(`.section__boxes`).on("click", ".edit", function () {
   edit = $(this).closest(".nav").siblings(".value");
-  $(`.section__edit`).css(`bottom`, `110px`);
+  $(`.section__edit`).css(`bottom`, `250px`);
   $(`.edit__input`).focus();
   $(`.edit__edit`).click(function () {
     editNote(edit);
@@ -118,7 +118,7 @@ $(`.section__boxes`).on("click", ".edit", function () {
 });
 
 $(`.edit__close`).click(function () {
-  $(this).parent(`.section__edit`).css(`bottom`, `-110px`);
+  $(this).parent(`.section__edit`).css(`bottom`, `-250px`);
 });
 
 $(`.section__boxes`).on("click", ".trash-icon", function () {
