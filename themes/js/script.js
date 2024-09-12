@@ -65,7 +65,7 @@ function editNote(edit) {
     if (checkDir(editValue) === true) edit.css(`direction`, `ltr`);
     else edit.css(`direction`, `rtl`);
     edit.html(editValue);
-    $(`.section__edit`).css(`bottom`, `-110px`);
+    $(`.section__edit`).css(`bottom`, `-250px`);
   }
   let time = addTime();
   edit.siblings(`.time`).html(`ویرایش شده: ${time}`);
