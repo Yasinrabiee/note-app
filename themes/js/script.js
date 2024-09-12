@@ -62,8 +62,8 @@ function editNote(edit) {
     $(`.section__edit`).css(`bottom`, `-250px`);
   }
   let time = addTime();
-  edit.siblings(`.edited`).html(`ویرایش شده:`);
-  edit.siblings(`.time__time`).html(`${time}`);
+  edit.siblings(`.time`).children(`.edited`).html(`ویرایش شده:`);
+  edit.siblings(`.time`).children(`.time__time`).html(`${time}`);
 }
 
 function addTime() {
