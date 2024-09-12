@@ -180,7 +180,7 @@ width: 250px;
 	height: 40px;
 	justify-content: center;
 	flex-direction: row-reverse;
-	bottom: -110px;
+	bottom: -250px;
 	display: flex;
 	gap: 6px;
 	transition: all 500ms;
