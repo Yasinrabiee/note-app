@@ -2,17 +2,16 @@ let value;
 let bgc;
 
 function setColor(color) {
-	bgc = color.css(`background-color`);
-	$(`.section__input__text`).css(`background-color`,bgc);
+  bgc = color.css(`background-color`);
+  $(`.section__input__text`).css(`background-color`, bgc);
 }
 
 function add() {
-	value = $(`.section__input__text`).val();
-	if(value.trim() !== '')
-	{
-		let time = addTime();
-		const char = value.charCodeAt(0);
-		let elem = $(`
+  value = $(`.section__input__text`).val();
+  if (value.trim() !== "") {
+    let time = addTime();
+    const char = value.charCodeAt(0);
+    let elem = $(`
 			<div class="box" style="background-color: ${bgc};">
 			<div class="nav">
 			<div>
@@ -40,122 +39,110 @@ function add() {
 			</div>
 			</div>
 			`);
-		if(char >= 65 && char <= 122)
-			elem.children(`.value`).css(`direction`,`ltr`);
-		else
-			elem.children(`.value`).css(`direction`,`rtl`);
-		$(`.section__boxes`).append(elem);
-		$(`.section__input__text`).val(``);
-	}
+    if (char >= 65 && char <= 122)
+      elem.children(`.value`).css(`direction`, `ltr`);
+    else elem.children(`.value`).css(`direction`, `rtl`);
+    $(`.section__boxes`).append(elem);
+    $(`.section__input__text`).val(``);
+  }
 }
 
 function checkDir(text) {
-	let char = text.charCodeAt(0);
-	if(char >= 65 && char <= 122)
-		return true;
-	return false;
+  let char = text.charCodeAt(0);
+  if (char >= 65 && char <= 122) return true;
+  return false;
 }
 
 function editNote(edit) {
-	let editValue = $(`.edit__input`).val();
-	if(editValue.trim() !== '')
-	{
-		if(checkDir(editValue) === true)
-			edit.css(`direction`,`ltr`);
-		else
-			edit.css(`direction`,`rtl`);
-		edit.html(editValue);
-		$(`.section__edit`).css(`bottom`,`-110px`);
-	}
-	let time = addTime();
-	edit.siblings(`.time`).children(`.edited`).html(`ویرایش شده:`);
-	edit.siblings(`.time`).children(`.time__time`).html(`${time}`);
+  let editValue = $(`.edit__input`).val();
+  if (editValue.trim() !== "") {
+    if (checkDir(editValue) === true) edit.css(`direction`, `ltr`);
+    else edit.css(`direction`, `rtl`);
+    edit.html(editValue);
+    $(`.section__edit`).css(`bottom`, `-250px`);
+  }
+  let time = addTime();
+  edit.siblings(`.time`).html(`ویرایش شده: ${time}`);
 }
 
 function addTime() {
-	const persianDateTimeFormat = new Intl.DateTimeFormat('fa', {
-		year: 'numeric',
-		month: 'long',
-		day: 'numeric',
-		weekday: 'long'
-	});
-	const now = new Date();
-	const format = persianDateTimeFormat.format(now);
-	const hour = now.getHours().toString().padStart(2, `0`);
-	const minute = now.getMinutes().toString().padStart(2, `0`);
-	let hourMinute = `${hour}:${minute}`;
-	hourMinute = En2Fa(hourMinute);
-	return `${format} ${hourMinute}`;
+  const persianDateTimeFormat = new Intl.DateTimeFormat("fa", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    weekday: "long",
+  });
+  const now = new Date();
+  const format = persianDateTimeFormat.format(now);
+  const hour = now.getHours().toString().padStart(2, `0`);
+  const minute = now.getMinutes().toString().padStart(2, `0`);
+  let hourMinute = `${hour}:${minute}`;
+  hourMinute = En2Fa(hourMinute);
+  return `${format} ${hourMinute}`;
 }
 
 function En2Fa(value) {
-	value = value.replace(/0/g, `۰`);
-	value = value.replace(/1/g, `۱`);
-	value = value.replace(/2/g, `۲`);
-	value = value.replace(/3/g, `۳`);
-	value = value.replace(/4/g, `۴`);
-	value = value.replace(/5/g, `۵`);
-	value = value.replace(/6/g, `۶`);
-	value = value.replace(/7/g, `۷`);
-	value = value.replace(/8/g, `۸`);
-	value = value.replace(/9/g, `۹`);
-	return value;
+  value = value.replace(/0/g, `۰`);
+  value = value.replace(/1/g, `۱`);
+  value = value.replace(/2/g, `۲`);
+  value = value.replace(/3/g, `۳`);
+  value = value.replace(/4/g, `۴`);
+  value = value.replace(/5/g, `۵`);
+  value = value.replace(/6/g, `۶`);
+  value = value.replace(/7/g, `۷`);
+  value = value.replace(/8/g, `۸`);
+  value = value.replace(/9/g, `۹`);
+  return value;
 }
 
-$(`.color`).click(function() {
-	let color = $(this);
-	setColor(color);
+$(`.color`).click(function () {
+  let color = $(this);
+  setColor(color);
 });
 
-$(`#add-btn`).click(function() {
-	add();
+$(`#add-btn`).click(function () {
+  add();
 });
 
-$(`#delete-btn`).click(function() {
-	$(`.section__input__text`).val(``);
+$(`#delete-btn`).click(function () {
+  $(`.section__input__text`).val(``);
 });
 
-$(`html`).keydown(function(event) {
-	if(event.key == `Enter`)
-		add();
+$(`html`).keydown(function (event) {
+  if (event.key == `Enter`) add();
 });
 
-$(`.section__boxes`).on('click','.star',function() {
-	let note = $(this).closest(`.box`);
-	if($(this).hasClass(`active`))
-		note.css(`order`,`100`);	
-	else
-		note.css(`order`,`1`);
-	$(this).toggleClass(`active`);
+$(`.section__boxes`).on("click", ".star", function () {
+  let note = $(this).closest(`.box`);
+  if ($(this).hasClass(`active`)) note.css(`order`, `100`);
+  else note.css(`order`, `1`);
+  $(this).toggleClass(`active`);
 });
 
 let edit;
-$(`.section__boxes`).on('click','.edit',function() {
-	edit = $(this).closest('.nav').siblings('.value');
-	$(`.section__edit`).css(`bottom`,`110px`);
-	$(`.edit__input`).focus();
-	$(`.edit__edit`).click(function() {
-		editNote(edit);
-	});
-	$(`.edit__input`).keydown(function(event) {
-		if(event.key == `Enter`)
-			editNote(edit);
-	});
+$(`.section__boxes`).on("click", ".edit", function () {
+  edit = $(this).closest(".nav").siblings(".value");
+  $(`.section__edit`).css(`bottom`, `250px`);
+  $(`.edit__input`).focus();
+  $(`.edit__edit`).click(function () {
+    editNote(edit);
+  });
+  $(`.edit__input`).keydown(function (event) {
+    if (event.key == `Enter`) editNote(edit);
+  });
 });
 
-$(`.edit__close`).click(function() {
-	$(this).parent(`.section__edit`).css(`bottom`,`-110px`);
+$(`.edit__close`).click(function () {
+  $(this).parent(`.section__edit`).css(`bottom`, `-250px`);
 });
 
-$(`.section__boxes`).on('click','.trash-icon', function() {
-	let trashIcon = $(this).parents(`.box`);
-	trashIcon.fadeOut(400);
+$(`.section__boxes`).on("click", ".trash-icon", function () {
+  let trashIcon = $(this).parents(`.box`);
+  trashIcon.fadeOut(400);
 });
 
-$( `.edit__input`).on('input',function() {
-	let text = $(this).val();
-	if(checkDir(text) === true)
-		$(this).css(`direction`,`ltr`);
-	else
-		$(this).css(`direction`,`rtl`);
+$(`.edit__input`).on("input", function () {
+  let text = $(this).val();
+  if (checkDir(text) === true) $(this).css(`direction`, `ltr`);
+  else $(this).css(`direction`, `rtl`);
 });
