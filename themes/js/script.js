@@ -2,16 +2,16 @@ let value;
 let bgc;
 
 function setColor(color) {
-  bgc = color.css(`background-color`);
-  $(`.section__input__text`).css(`background-color`, bgc);
+	bgc = color.css(`background-color`);
+	$(`.section__input__text`).css(`background-color`,bgc);
 }
 
-function add() {
-  value = $(`.section__input__text`).val();
-  if (value.trim() !== "") {
-    let time = addTime();
-    const char = value.charCodeAt(0);
-    let elem = $(`
+function addNote() {
+	value = $(`.section__input__text`).val();
+	if(value.trim() !== '') {
+		let time = addTime();
+		const char = value.charCodeAt(0);
+		let elem = $(`
 			<div class="box" style="background-color: ${bgc};">
 			<div class="nav">
 			<div>
@@ -34,116 +34,177 @@ function add() {
 			</div>
 			<div class="value">${value}</div>
 			<div class="time">
-				<div class="edited"></div>
-				<div class="time__time">${time}</div>
+			<div class="edited"></div>
+			<div class="time__time">${time}</div>
 			</div>
 			</div>
 			`);
-    if (char >= 65 && char <= 122)
-      elem.children(`.value`).css(`direction`, `ltr`);
-    else elem.children(`.value`).css(`direction`, `rtl`);
-    $(`.section__boxes`).append(elem);
-    $(`.section__input__text`).val(``);
-  }
+		if(char >= 65 && char <= 122)
+			elem.children(`.value`).css(`direction`,`ltr`);
+		else
+			elem.children(`.value`).css(`direction`,`rtl`);
+		$(`.section__boxes`).append(elem);
+		$(`.section__input__text`).val(``);
+	}
 }
 
 function checkDir(text) {
-  let char = text.charCodeAt(0);
-  if (char >= 65 && char <= 122) return true;
-  return false;
+	let char = text.charCodeAt(0);
+	if(char >= 65 && char <= 122)
+		return true;
+	return false;
 }
 
 function editNote(edit) {
-  let editValue = $(`.edit__input`).val();
-  if (editValue.trim() !== "") {
-    if (checkDir(editValue) === true) edit.css(`direction`, `ltr`);
-    else edit.css(`direction`, `rtl`);
-    edit.html(editValue);
-    $(`.section__edit`).css(`bottom`, `-250px`);
-  }
-  let time = addTime();
-  edit.siblings(`.time`).children(`.edited`).html(`ویرایش شده:`);
-  edit.siblings(`.time`).children(`.time__time`).html(`${time}`);
+	let editValue = $(`.edit__input`).val();
+	if(editValue.trim() !== '') {
+		if(checkDir(editValue) === true)
+			edit.css(`direction`,`ltr`);
+		else
+			edit.css(`direction`,`rtl`);
+		edit.html(editValue);
+		$(`.section__edit`).css(`bottom`,`-110px`);
+	}
+	let time = addTime();
+	edit.siblings(`.time`).children(`.edited`).html(`ویرایش شده:`);
+	edit.siblings(`.time`).children(`.time__time`).html(`${time}`);
 }
 
 function addTime() {
-  const persianDateTimeFormat = new Intl.DateTimeFormat("fa", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    weekday: "long",
-  });
-  const now = new Date();
-  const format = persianDateTimeFormat.format(now);
-  const hour = now.getHours().toString().padStart(2, `0`);
-  const minute = now.getMinutes().toString().padStart(2, `0`);
-  let hourMinute = `${hour}:${minute}`;
-  hourMinute = En2Fa(hourMinute);
-  return `${format} ${hourMinute}`;
+	const persianDateTimeFormat = new Intl.DateTimeFormat('fa', {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
+		weekday: 'long'
+	});
+	const now = new Date();
+	const format = persianDateTimeFormat.format(now);
+	const hour = now.getHours().toString().padStart(2, `0`);
+	const minute = now.getMinutes().toString().padStart(2, `0`);
+	let hourMinute = `${hour}:${minute}`;
+	hourMinute = En2Fa(hourMinute);
+	return `${format} ${hourMinute}`;
 }
 
 function En2Fa(value) {
-  value = value.replace(/0/g, `۰`);
-  value = value.replace(/1/g, `۱`);
-  value = value.replace(/2/g, `۲`);
-  value = value.replace(/3/g, `۳`);
-  value = value.replace(/4/g, `۴`);
-  value = value.replace(/5/g, `۵`);
-  value = value.replace(/6/g, `۶`);
-  value = value.replace(/7/g, `۷`);
-  value = value.replace(/8/g, `۸`);
-  value = value.replace(/9/g, `۹`);
-  return value;
+	value = value.replace(/0/g, `۰`);
+	value = value.replace(/1/g, `۱`);
+	value = value.replace(/2/g, `۲`);
+	value = value.replace(/3/g, `۳`);
+	value = value.replace(/4/g, `۴`);
+	value = value.replace(/5/g, `۵`);
+	value = value.replace(/6/g, `۶`);
+	value = value.replace(/7/g, `۷`);
+	value = value.replace(/8/g, `۸`);
+	value = value.replace(/9/g, `۹`);
+	return value;
 }
 
-$(`.color`).click(function () {
-  let color = $(this);
-  setColor(color);
+function addCheckList() {
+	const value = $(`.check-list-input`).val();
+	if(value !== '') {
+		$(`.check-list-ul`).append(`
+			<div class="checklist-item-wrapper">
+			<input type="checkbox" class="check-box-input">
+			<div class="text">
+			<span class="line"></span>
+			<li class="check-list-value">${value}</li>
+			</div>
+			</div>
+			`)
+		$(`.check-list-input`).val(``);
+		$(`.check-list-input`).focus();
+	}
+}
+
+$(`.color`).click(function() {
+	let color = $(this);
+	setColor(color);
 });
 
-$(`#add-btn`).click(function () {
-  add();
+$(`#add-btn`).click(function() {
+	addNote();
 });
 
-$(`#delete-btn`).click(function () {
-  $(`.section__input__text`).val(``);
+$(`#delete-btn`).click(function() {
+	$(`.section__input__text`).val(``);
 });
 
-$(`html`).keydown(function (event) {
-  if (event.key == `Enter`) add();
+$(`html`).keydown(function(event) {
+	if(event.key == `Enter`)
+		addNote();
 });
 
-$(`.section__boxes`).on("click", ".star", function () {
-  let note = $(this).closest(`.box`);
-  if ($(this).hasClass(`active`)) note.css(`order`, `100`);
-  else note.css(`order`, `1`);
-  $(this).toggleClass(`active`);
+$(`.section__boxes`).on('click','.star', function() {
+	let note = $(this).closest(`.box`);
+	if($(this).hasClass(`active`))
+		note.css(`order`,`100`);	
+	else
+		note.css(`order`,`1`);
+	$(this).toggleClass(`active`);
 });
 
 let edit;
-$(`.section__boxes`).on("click", ".edit", function () {
-  edit = $(this).closest(".nav").siblings(".value");
-  $(`.section__edit`).css(`bottom`, `250px`);
-  $(`.edit__input`).focus();
-  $(`.edit__edit`).click(function () {
-    editNote(edit);
-  });
-  $(`.edit__input`).keydown(function (event) {
-    if (event.key == `Enter`) editNote(edit);
-  });
+$(`.section__boxes`).on('click', '.edit', function() {
+	edit = $(this).closest('.nav').siblings('.value');
+	$(`.section__edit`).css(`bottom`,`110px`);
+	$(`.edit__input`).focus();
+	$(`.edit__edit`).click(function() {
+		editNote(edit);
+	});
+	$(`.edit__input`).keydown(function(event) {
+		if(event.key == `Enter`)
+			editNote(edit);
+	});
 });
 
-$(`.edit__close`).click(function () {
-  $(this).parent(`.section__edit`).css(`bottom`, `-250px`);
+$(`.edit__close`).click(function() {
+	$(this).parent(`.section__edit`).css(`bottom`,`-110px`);
 });
 
-$(`.section__boxes`).on("click", ".trash-icon", function () {
-  let trashIcon = $(this).parents(`.box`);
-  trashIcon.fadeOut(400);
+$(`.section__boxes`).on('click', '.trash-icon', function() {
+	let trashIcon = $(this).parents(`.box`);
+	trashIcon.fadeOut(400);
 });
 
-$(`.edit__input`).on("input", function () {
-  let text = $(this).val();
-  if (checkDir(text) === true) $(this).css(`direction`, `ltr`);
-  else $(this).css(`direction`, `rtl`);
+$( `.edit__input`).on('input', function() {
+	let text = $(this).val();
+	if(checkDir(text) === true)
+		$(this).css(`direction`,`ltr`);
+	else
+		$(this).css(`direction`,`rtl`);
+});
+
+$(`#check-list`).click(function() {
+	$(this).toggleClass(`check-active`);
+	if($(this).hasClass(`check-active`)) {
+		$(`.checklist-container`).fadeIn(250);
+		$(`.check-list-input`).focus();
+		$(this).css(`color`,`#0091EA`)
+	}
+	else {
+		$(`.checklist-container`).fadeOut(250);
+		$(this).css(`color`,`#989b9d`)
+	}
+});
+
+$(`.plus-checklist`).click(function() {
+	addCheckList()
+});
+
+$(`.check-list-input`).keydown(function(event) {
+	if(event.key == `Enter`)
+		addCheckList();
+});
+
+$(`.check-list-ul`).on('click', '.check-box-input', function() {
+	$(this).toggleClass(`active`);
+	if($(this).hasClass(`active`)) {
+		$(this).siblings(`.text`).children(`.line`).css(`width`, `100%`)
+		$(this).siblings(`.text`).css(`color`,`#989b9d`);
+	}
+	else {
+		$(this).siblings(`.text`).children(`.line`).css(`width`, `0%`)
+		$(this).siblings(`.text`).css(`color`,`#0091EA`);
+	}
 });
