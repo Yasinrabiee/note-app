@@ -106,7 +106,7 @@ input[type="checkbox"] {
 	color: #D32F2F;
 }
 
-#check-list:hover{
+#check-list:hover {
 	color: #0091EA;
 }
 
@@ -214,7 +214,7 @@ input[type="checkbox"] {
 	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
-.edit__input:focus  {
+.edit__input:focus {
 	color: #212529;
 	background-color: #fff;
 	border-color: #86b7fe;
@@ -293,8 +293,6 @@ input[type="checkbox"] {
 	margin: 10px;
 	border-radius: 5px;
 	width: 250px;
-/*	min-height: 150px;*/
-/*	text-align: start;*/
 	padding: 5px 10px;
 	font-size: 15px;
 	background: #fff;
@@ -320,20 +318,20 @@ input[type="checkbox"] {
 /*	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;*/
 }
 
-.plus-checklist{
+.plus-checklist {
 	width: 20px;
 	height: 20px;
 	color: green;
 }
 
-.checklist-wrapper{
+.checklist-wrapper {
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
-.check-list-ul{
+.check-list-ul {
 	margin-block-start: 10px;
 	padding: 0 5px;
 	display: flex;
@@ -342,22 +340,22 @@ input[type="checkbox"] {
 /*	text-decoration: line-through;*/
 }
 
-.checklist-item-wrapper{
+.checklist-item-wrapper {
 	display: flex;
 	align-items: center;
 	gap: 5px;
 }
 
-.check-list-value{
+.check-list-value {
 	transition: all 300ms;
 }
 
-.text{
+.text {
 	position: relative;
 	display: inline-block;
 }
 
-.line{
+.line {
 	position: absolute;
 	left: 0;
 	top: 46%;
